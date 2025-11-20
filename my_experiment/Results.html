@@ -1,0 +1,16 @@
+{% extends "global/Base.html" %}
+{% block content %}
+  <h3>Round {{ player.round_number }} の結果（確認用）</h3>
+  <ul>
+    <li>役割: {{ player.role }}</li>
+    <li>順番: {{ player.rank_in_group }}</li>
+    <li>購入意思: {{ player.purchase }}</li>
+    <li>割当数量（一次市場）: {{ player.quantity }}</li>
+    <li>一次市場で獲得できたか: {{ player.primary_bought }}</li>
+    <li>オークション入札: {{ player.bid_price }}</li>
+    <li>二次市場（買いたい値）: {{ player.resale_bid }}</li>
+    <li>二次市場（売りたい値）: {{ player.resale_offer }}</li>
+  </ul>
+
+  <a href="{% url 'NextPage' %}">次へ</a>
+{% endblock %}

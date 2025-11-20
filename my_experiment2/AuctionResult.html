@@ -1,0 +1,64 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+ラウンド {{ subsession.round_number }}
+{% endblock %}
+
+{% block content %}
+
+<h3>一次市場（オークション）の結果</h3>
+
+<p>
+  グループ内のプレイヤーが提示した入札額と、落札者がいくら支払ったかを示しています。<br>
+  <strong>黄色の行があなたです。</strong>
+</p>
+
+{# ★ 太線用のCSS（ここに書いてOK） #}
+<style>
+  /* tr にクラスを付けて、セル(td)の下線を太くする */
+  .bottom-border > td {
+    border-bottom: 3px solid #000 !important;
+  }
+</style>
+
+<table class="table table-bordered" style="max-width: 700px;">
+  <thead>
+    <tr>
+      <th>id_in_group</th>
+      <th>入札額</th>
+      <th>落札数量</th>
+      <th>一次市場で支払った金額</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for r in auction_rows %}
+    <tr
+      class="
+        {% if r.is_me %}table-warning{% endif %}
+        {% if forloop.counter0 == boundary_index %} bottom-border{% endif %}
+      "
+    >
+      <td>{{ r.id_in_group }}</td>
+
+      <td>
+        {% if r.bid %}
+          {{ r.bid }} 
+        {% else %}
+          ー
+        {% endif %}
+      </td>
+
+      <td>{{ r.units }} 点</td>
+
+      <td>{{ r.paid }} </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% next_button %}
+
+{% endblock %}
+
+

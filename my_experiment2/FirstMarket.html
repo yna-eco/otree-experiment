@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+ラウンド {{ subsession.round_number }}（一次市場）
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ title }}</h3>
+
+<p>{{ explanation|safe }}</p>
+
+<p>あなたの役割：{{ role }}</p>
+
+{% if reservation_price %}
+<p>あなたの留保価格は {{ reservation_price }} 円です。</p>
+{% endif %}
+
+<hr>
+
+<p><b>選択してください</b></p>
+<!-- ここで動的に choices を展開して buy_primary を作る -->
+{% for val, label in choices %}
+    <label>
+        <input type="radio" name="buy_primary" value="{{ val }}">
+        {{ label }}
+    </label><br>
+{% endfor %}
+
+<p> </p>
+{# 実験3・5のときだけ入札額フィールドを出す #}
+{% if experiment_no in [3, 5] %}
+  <p>{{ form.bid_primary.label|safe }}</p>
+  {{ form.bid_primary }}
+
+{% endif %}
+
+{% next_button %}
+
+{% endblock %}

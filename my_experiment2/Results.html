@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+ラウンド {{ subsession.round_number }}　結果
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ title }}</h3>
+
+<h4>【あなたの結果】</h4>
+
+<p>
+  役割：{{ role }}
+  {% if reservation_price %}
+    　留保価格：{{ reservation_price }} 円
+  {% endif %}
+</p>
+
+<table class="table table-bordered" style="max-width: 600px;">
+  <tr class="table-primary">
+    <th colspan="2">一次市場の結果</th>
+  </tr>
+  <tr>
+    <th>購入数量</th>
+    <td>{{ units_bought_primary }} 点</td>
+  </tr>
+  <tr>
+    <th>支払額</th>
+    <td>{{ primary_paid }} </td>
+  </tr>
+  <tr>
+    <th>一次余剰</th>
+    <td>{{ primary_surplus }} </td>
+  </tr>
+
+  <tr class="table-primary">
+    <th colspan="2">二次市場の結果</th>
+  </tr>
+  <tr>
+    <th>取引</th>
+    <td>
+      {% if trade_occurred %}
+        成立
+      {% else %}
+        ー
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <th>取引価格</th>
+    <td>
+      {% if trade_occurred and trade_price %}
+        {{ trade_price }} 
+      {% else %}
+        ー
+      {% endif %}
+
+    </td>
+  </tr>
+  <tr>
+    <th>二次余剰</th>
+    <td>{{ secondary_surplus }} </td>
+  </tr>
+
+  <tr class="table-success">
+    <th>総余剰</th>
+    <td><strong>{{ total_surplus }} </strong></td>
+  </tr>
+</table>
+
+{% next_button %}
+
+{% endblock %}

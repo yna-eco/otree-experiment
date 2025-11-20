@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+二次市場（ラウンド {{ subsession.round_number }}）
+{% endblock %}
+
+{% block content %}
+
+<h3>実験 {{ experiment_no }}：二次市場</h3>
+
+<p>{{ explanation }}</p>
+
+<p>あなたの役割：{{ role }}</p>
+<p>一次市場で購入できた数量：{{ units_bought_primary }} 枚</p>
+
+<hr>
+
+{{ formfields }}
+
+{% next_button %}
+
+{% endblock %}

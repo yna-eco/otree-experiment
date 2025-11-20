@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+実験について
+{% endblock %}
+
+{% block content %}
+
+<h3>～よく読んでください～</h3>
+
+<h4>【役割】</h4>
+
+<p>あなたの役割は<strong><span style="font-size: 1.4em;">{{ role_jp }}</span></strong>です。</p>
+{% if reservation_price %}
+<p>この商品に対してあなたが「これなら最大で支払ってもよい」と考える金額＝<strong>留保価格</strong>は<strong><span style="font-size: 1.4em;">{{ reservation_price }} 円</span></strong>です。</p>
+{% endif %}
+<p>※役割（/留保価格）はすべての実験において<strong>固定</strong>です。</p>
+
+
+<h4><br>【あなたの役割の説明】</h4>
+
+<p>{{ explanation|safe }}</p>
+
+<hr>
+
+<h4>【余剰（利得）と成績加点について】</h4>
+
+<p>本実験では、一次市場・二次市場でのあなたの行動によって<strong>余剰（利得）</strong> が生じます。</p>
+
+<p>この余剰の合計が、<strong>成績への加点に反映されます</strong>。</p>
+<p>つまり、余剰を高めるほど、あなたにとって有利になります。</p>
+
+<p>また、あなたは 5人で構成される1つの市場の参加者です。</p>
+<p>他の参加者の行動（購入・入札・出品価格など）が、あなたの結果（購入の可否・転売の成功など）に影響します。</p>
+
+
+<hr>
+
+<p>説明を読んで理解できた方は、以下にチェックを入れて、次のページに進んでください。</p>
+
+<label>
+  {{ form.role_read }} {{ form.role_read.label }}
+</label>
+
+<br><br>
+
+
+{% next_button %}
+
+{% endblock %}

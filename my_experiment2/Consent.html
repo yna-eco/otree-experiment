@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+本実験について
+{% endblock %}
+
+{% block content %}
+
+<p>【実験のお願い】</p>
+<p>本実験は、同志社大学経済学部佐藤ゼミで行う卒業研究に関する調査です。</p>
+<p>　</p>
+
+<p>【回答の取り扱いについて】</p>
+<p>・回答いただいたデータは、研究目的のみに使用されます。</p>
+<p>・収集したデータは厳重に管理し、研究終了後に適切に破棄します。</p>
+<p>・学籍番号を収集しますが、結果はすべて統計的に処理しますので、個人は特定されず、プライバシーが侵害されることはありません。</p>
+
+<p>　</p>
+<p>ご協力の程、宜しくお願い致します。</p>
+
+<hr>
+
+<p>協力していただける方は、以下にチェックを入れて、次のページに進んでください。</p>
+
+<label>
+  {{ form.consent }} {{ form.consent.label }}
+</label>
+
+<br><br>
+
+<label>
+  {{ form.student_id.label }}<br>
+  {{ form.student_id }}
+</label>
+
+<br><br>
+
+{% next_button %}
+
+{% endblock %}

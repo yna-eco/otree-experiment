@@ -1,0 +1,11 @@
+{% extends "global/Base.html" %}
+{% block content %}
+  <h3>Round {{ player.round_number }} — Condition {{ subsession.condition }}</h3>
+  <p>あなたの役割：{{ player.role }}</p>
+  <p>あなたの順番：{{ player.rank_in_group }}</p>
+
+  <form method="post">
+    {{ formfields }}
+    <button type="submit">次へ</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+ラウンド {{ subsession.round_number }}（二次市場結果）
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ title }}</h3>
+
+<p>【あなたの結果】</p>
+<p>{{ my_status }}</p>
+
+{% if units_bought_secondary > 0 %}
+  <p>二次市場で支払った合計金額：{{ secondary_spent }} </p>
+{% endif %}
+
+{% if units_sold_secondary > 0 %}
+  <p>二次市場で受け取った合計金額：{{ secondary_earned }} </p>
+{% endif %}
+
+<hr>
+<p>【グループ内での二次市場の結果】</p>
+<p>二次市場に参加した買い手：{{ buyers_count }} 名</p>
+<p>出品された商品：{{ items_for_sale }} 点</p>
+<p>成立した取引：{{ trades }} 件</p>
+
+{% if trades > 0 %}
+  <p>成立した取引の平均価格：{{ avg_price }} </p>
+{% else %}
+  <p>取引価格：ー</p>
+{% endif %}
+
+{% next_button %}
+
+{% endblock %}
