@@ -4,11 +4,22 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name="my_experiment2",
-        display_name="Ticket Market Experiments 1-5",
+        display_name="Market Experiments 1-5",
         app_sequence=["my_experiment2"],
         num_demo_participants=5,
     ),
 ]
+
+ROOMS = [
+    dict(
+        name='ticket_market',
+        display_name='市場実験ルーム',
+        # 参加者ラベルを使わないなら、下の行は消してOK
+        # participant_label_file='ticket_market.txt',
+        use_secure_urls=False,
+    ),
+]
+
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
